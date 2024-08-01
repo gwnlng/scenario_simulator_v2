@@ -70,7 +70,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: gnleong/snyk-syft-sbom:latest
-          options: -v ${{ github.workspace }}:/app
+          options: -v ${{ github.workspace }}:/app -e SNYK_ORG=${{ vars.SNYK_ORG }} -e SNYK_API_TOKEN=${{ secrets.SNYK_TOKEN }} -e SNYK_API_ENDPOINT=https://api.snyk.io
           run: |
             /opt/snyk-syft-sbom/bin/snyk-syft-sbom_amd64 scan -o cyclonedx-json@1.5=sbom.json dir:/app
         env:
