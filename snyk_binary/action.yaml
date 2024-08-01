@@ -20,8 +20,3 @@ runs:
     FORCE_COLOR: 2
     SNYK_INTEGRATION_NAME: GITHUB_ACTIONS
     SNYK_INTEGRATION_VERSION: binary
-  args:
-  - snyk-syft-sbom_amd64
-  - ${{ inputs.command }}
-  - ${{ inputs.args }}
-  - ${{ inputs.json }}
