@@ -67,7 +67,12 @@ jobs:
           vcs import src < src/scenario_simulator_v2/dependency_${{ matrix.rosdistro }}.repos
 
       - name: Run Snyk to check for vulnerabilities
-        uses: gwnlng/scenario_simulator_v2/snyk_binary@master
+        uses: addnab/docker-run-action@v3
+        with:
+          image: gnleong/snyk-syft-sbom:latest
+          options: -v ${{ github.workspace }}:/app
+          run: |
+            /opt/snyk-syft-sbom/bin/snyk-syft-sbom_amd64 scan -o cyclonedx-json@1.5=sbom.json dir:/app
         env:
           SNYK_API_ENDPOINT: https://api.snyk.io
           SNYK_API_TOKEN: ${{ secrets.SNYK_TOKEN }}
