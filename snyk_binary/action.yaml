@@ -20,5 +20,3 @@ runs:
     FORCE_COLOR: 2
     SNYK_INTEGRATION_NAME: GITHUB_ACTIONS
     SNYK_INTEGRATION_VERSION: binary
-  volumes:
-    - ${{ github.workspace }}:/app
