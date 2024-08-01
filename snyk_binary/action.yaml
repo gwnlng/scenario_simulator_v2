@@ -15,8 +15,10 @@ inputs:
     default: 
 runs:
   using: "docker"
-  image: "docker://gnleong/snyk-syft-sbom:0.0.3"
+  image: "docker://gnleong/snyk-syft-sbom:latest"
   env:
     FORCE_COLOR: 2
     SNYK_INTEGRATION_NAME: GITHUB_ACTIONS
     SNYK_INTEGRATION_VERSION: binary
+  volumes:
+    - ${{ github.workspace }}:/app
